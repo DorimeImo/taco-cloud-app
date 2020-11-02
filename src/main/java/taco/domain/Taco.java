@@ -7,14 +7,13 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-
-@NoArgsConstructor
-@Entity
 @Data
+@Entity
+@NoArgsConstructor
+@Table(name = "Taco")
 public class Taco implements Serializable {
 
     @Id
@@ -25,9 +24,9 @@ public class Taco implements Serializable {
     @Size(min=5, message="Name must be at least 5 characters long")
     private String name;
 
-    @ManyToMany(targetEntity = Ingredient.class)
+    @ManyToMany
     @Size(min=2, message="You must choose at least 2 ingredient")
-    private List<Ingredient> ingredients=new ArrayList<>();
+    private List<Ingredient> ingredients;
 
     private Date createdAt;
 

@@ -50,11 +50,9 @@ public class DesignTacoController {
     }
 
     @PostMapping
-    public String processDesign(@Valid Taco design, Errors errors, ArrayList<Ingredient> list, Model model) {
-        Order order = (Order) model.getAttribute("order");
-        log.info(design.toString());
-        log.info(order.toString());
-        list.forEach(x->System.out.println(x.toString()));
+    public String processDesign(@ModelAttribute("taco") @Valid Taco design, Errors errors,
+                                @SessionAttribute("order") Order order,
+                                Model model) {
 
         if (errors.hasErrors()) {
             populateModelWithIngredients(model);

@@ -5,19 +5,19 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.Id;
+import javax.persistence.*;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 
-@RequiredArgsConstructor
-@NoArgsConstructor(access=AccessLevel.PUBLIC, force=true)
-@Entity
 @Data
+@Entity
+@NoArgsConstructor(access=AccessLevel.PUBLIC, force=true)
+@RequiredArgsConstructor
+
 public class Ingredient implements Serializable {
 
     @Id
+    @Column(length = 4)
     private final String id;
     private final String name;
     @Enumerated(EnumType.STRING)
